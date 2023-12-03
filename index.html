@@ -1,0 +1,99 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- Add Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Task Management</title>
+</head>
+
+<body>
+  <header class="cd-main-header">
+
+    <a href="#0" class="cd-nav-trigger"><span></span></a>
+
+    <nav class="cd-nav">
+      <ul class="cd-top-nav">
+        <li class="calendar"><i class="fa fa-calendar" aria-hidden="true"></i></li>
+        <li>
+          <h3 id="date">Wednesday, 15th October, 2015</h3>
+          <h3 id="liveClock">Wednesday, 15th October, 2015</h3>
+          <!-- <p id="liveClock"></p> -->
+        </li>
+        <li class="action-btn"><a href="#">Add Task</a></li>
+        <li class="notification2"><i class="fa fa-bell-o" aria-hidden="true"></i></li>
+        <li class="alert"><span class="">5</span></li>
+
+      </ul>
+    </nav>
+  </header>
+
+  <main class="cd-main-content">
+    <nav class="cd-side-nav">
+      <div class="sidebar-header">
+        <div class="top-bar">
+          <div class="left"><i class="fa fa-volume-up" aria-hidden="true"></i></div>
+          <div class="right"><i class="fa fa-cog" aria-hidden="true"></i></div>
+        </div>
+        <div class="sidebar-image">
+          <img src="/assets/img/avatar-svgrepo-com.svg">
+        </div>
+        <div class="bottom-bar">
+          <div class="name">Ezzy</div>
+          <div class="occupation">Junior Web Developer</div>
+        </div>
+      </div>
+      <div class="cd-search">
+        <form action="#0">
+          <input type="search" placeholder="&#xf002; Search">
+        </form>
+      </div>
+
+      <ul class="side-menu">
+
+        <li class="cd-label"><i class="fa fa-plus" aria-hidden="true"></i>Add Project</li>
+        <li class="active">
+          <a href="#0"><i class="fa fa-database" aria-hidden="true"></i>Secret Project</a>
+
+          <ul class="sub-menu">
+            <li class="active-submenu"><i class="fa fa-circle" aria-hidden="true"></i>All Tasks</li>
+            <li class="People"><i class="fa fa-circle" aria-hidden="true"></i>Personal</li>
+            <li class="Files"><i class="fa fa-circle" aria-hidden="true"></i>Work<span class="count">52</span></li>
+            <li class="Statistics"><i class="fa fa-circle" aria-hidden="true"></i>Others</li>
+          </ul>
+        </li>
+
+        <li class="cd-label2"><i class="fa fa-calendar" aria-hidden="true"></i></i>Calendar</li>
+        <li class="cd-label3"><i class="fa fa-database" aria-hidden="true"></i></i>Tools</li>
+      </ul>
+
+    </nav>
+
+    <div class="content-wrapper">
+      <ul class="task-list">
+        <li class="task-item">
+          <div class="avatar2">
+            <img src="/assets/img/task-svgrepo-com.svg">
+          </div>
+          <div class="info">
+
+            <h3 class="task-name">Registeration UX Design.</h3>
+            <p class="assignee">by Ezzy</p>
+
+          </div>
+          <div class="task-actions orange">
+            <a class="">EXPIRING</a>
+          </div>
+
+          <div class="checkbox">
+            <input id='one' type="checkbox" class="checked" name="task_1" />
+          </div>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+
+</body>
