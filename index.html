@@ -56,10 +56,18 @@
           <a href="#0"><i class="fa fa-database" aria-hidden="true"></i>Secret Project</a>
 
           <ul class="sub-menu">
-            <li class="active-submenu"><i class="fa fa-circle" aria-hidden="true"></i>All Tasks</li>
+
+            <li data-filter=".filter-personal" class="active personal"><i class="fa fa-circle"
+                aria-hidden="true"></i>Personal
+            </li>
+            <!-- <span class="material-symbols-outlined"> horizontal_rule </span> -->
+            <li data-filter=".filter-work" class="work"><i class="fa fa-circle" aria-hidden="true"></i>Work</li>
+            <!-- <span class="material-symbols-outlined"> horizontal_rule </span> -->
+            <li data-filter=".filter-other" class="other"><i class="fa fa-circle" aria-hidden="true"></i>Other</li>
+            <!-- <li class="active-submenu"><i class="fa fa-circle" aria-hidden="true"></i>All Tasks</li>
             <li class="People"><i class="fa fa-circle" aria-hidden="true"></i>Personal</li>
             <li class="Files"><i class="fa fa-circle" aria-hidden="true"></i>Work<span class="count">52</span></li>
-            <li class="Statistics"><i class="fa fa-circle" aria-hidden="true"></i>Others</li>
+            <li class="Statistics"><i class="fa fa-circle" aria-hidden="true"></i>Others</li> -->
           </ul>
         </li>
 
@@ -70,29 +78,79 @@
     </nav>
 
     <div class="content-wrapper">
-      <ul class="task-list">
-        <li class="task-item">
-          <div class="avatar2">
-            <img src="/assets/img/task-svgrepo-com.svg">
-          </div>
-          <div class="info">
 
-            <h3 class="task-name">Registeration UX Design.</h3>
-            <p class="assignee">by Ezzy</p>
+      <div class="task_wrap-container">
+        <div class="task_item filter-personal">
+          <ul class="task-list">
+            <li class="task-item">
+              <div class="avatar2">
+                <img src="/assets/img/task-svgrepo-com.svg">
+              </div>
+              <div class="info">
 
-          </div>
-          <div class="task-actions orange">
-            <a class="">EXPIRING</a>
-          </div>
+                <h3 class="task-name">Registeration UX Design.</h3>
+                <p class="assignee">by Ezzy</p>
 
-          <div class="checkbox">
-            <input id='one' type="checkbox" class="checked" name="task_1" />
-          </div>
-        </li>
-      </ul>
+              </div>
+              <div class="task-actions orange">
+                <a class="">EXPIRING</a>
+              </div>
+
+              <div class="checkbox">
+                <input id='one' type="checkbox" class="checked" name="task_1" />
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="task_item filter-personal">
+          <ul class="task-list">
+            <li class="task-item">
+              <div class="avatar2">
+                <img src="/assets/img/task-svgrepo-com.svg">
+              </div>
+              <div class="info">
+
+                <h3 class="task-name">Registeration UX Design.</h3>
+                <p class="assignee">by Ezzy</p>
+
+              </div>
+              <div class="task-actions orange">
+                <a class="">EXPIRING</a>
+              </div>
+
+              <div class="checkbox">
+                <input id='one' type="checkbox" class="checked" name="task_1" />
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="task_item filter-work">
+          <ul class="task-list">
+            <li class="task-item">
+              <div class="avatar2">
+                <img src="/assets/img/task-svgrepo-com.svg">
+              </div>
+              <div class="info">
+
+                <h3 class="task-name">Registeration UX Design.</h3>
+                <p class="assignee">by Ezzy</p>
+
+              </div>
+              <div class="task-actions orange">
+                <a class="">EXPIRING</a>
+              </div>
+
+              <div class="checkbox">
+                <input id='one' type="checkbox" class="checked" name="task_1" />
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </main>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="/assets/js/main.js"></script>
 

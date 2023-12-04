@@ -161,3 +161,45 @@ class DateTimeDisplay {
 // Create an instance of DateTimeDisplay with element IDs
 const dateTimeDisplay = new DateTimeDisplay("date", "liveClock");
 // ===== End Get Local Time =====
+// ===== filter ====
+document.addEventListener("DOMContentLoaded", function () {
+  // Initially hide elements with classes filter-geo and filter-wind
+  document
+    .querySelectorAll(".filter-work, .filter-other")
+    .forEach((element) => {
+      element.style.display = "none";
+    });
+
+  let filterItems = document.querySelectorAll(".temp_filters li");
+
+  function activePortfolio() {
+    filterItems.forEach((el) => {
+      el.classList.remove("filter-active");
+      this.classList.add("filter-active");
+
+      // Show or hide elements based on the selected filter
+      let selectedFilter = this.getAttribute("data-filter");
+      document.querySelectorAll(".temp_item").forEach((item) => {
+        if (item.classList.contains(selectedFilter)) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+  }
+
+  filterItems.forEach((el) => {
+    el.addEventListener("click", activePortfolio);
+  });
+
+  // Mixit up filter
+  let mixerPortfolio = mixitup(".task_wrap-container", {
+    selectors: {
+      target: ".task_item",
+    },
+    animation: {
+      duration: 300,
+    },
+  });
+});

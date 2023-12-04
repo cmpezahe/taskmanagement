@@ -91,7 +91,7 @@ ul {
 }
 
 :root {
-  --personal-clr: #EA40A4;
+  --personal-clr: #ea40a3b4;
   --business-clr: #3A82EE;
   --other-clr: #5eff75;
   --expire-clr: #ffca20;
@@ -740,11 +740,12 @@ Sidebar
   font-size: 12px
 }
 
-.cd-side-nav .People i {
+.cd-side-nav .personal i {
   color: var(--personal-clr);
+
 }
 
-.cd-side-nav .Files i {
+.cd-side-nav .work i {
   color: var(--business-clr);
 }
 
@@ -754,6 +755,14 @@ Sidebar
 
 .cd-side-nav .active-submenu i {
   color: #4caf50;
+}
+
+.task_wrap-container .filter-personal {
+  background-color: var(--personal-clr);
+}
+
+.task_wrap-container .filter-work {
+  background-color: var(--business-clr);
 }
 
 @media only screen and (min-width: 768px) {
