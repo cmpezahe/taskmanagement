@@ -1,205 +1,210 @@
-// ===== Page Functions =====
-jQuery(document).ready(function () {
-  var mainContent = $(".cd-main-content"),
-    header = $(".cd-main-header"),
-    sidebar = $(".cd-side-nav"),
-    sidebarTrigger = $(".cd-nav-trigger"),
-    topNavigation = $(".cd-top-nav"),
-    searchForm = $(".cd-search"),
-    accountInfo = $(".account");
+function header() {
+  const dateHeader = document.getElementById("date");
+  const taskCount = document.getElementById("task-count");
+  const completetask = document.getElementById("complete_task");
 
-  var resizing = false;
-  moveNavigation();
-  $(window).on("resize", function () {
-    if (!resizing) {
-      !window.requestAnimationFrame
-        ? setTimeout(moveNavigation, 300)
-        : window.requestAnimationFrame(moveNavigation);
-      resizing = true;
-    }
-  });
+  let storage = JSON.parse(localStorage.getItem("todolist"));
+  storage = storage ? storage : [];
 
-  var scrolling = false;
-  checkScrollbarPosition();
-  $(window).on("scroll", function () {
-    if (!scrolling) {
-      !window.requestAnimationFrame
-        ? setTimeout(checkScrollbarPosition, 300)
-        : window.requestAnimationFrame(checkScrollbarPosition);
-      scrolling = true;
-    }
-  });
+  dateHeader.innerHTML = moment(new Date()).format("ddd, LL");
+  taskCount.innerHTML = `${storage.length} Tasks`;
 
-  sidebarTrigger.on("click", function (event) {
-    event.preventDefault();
-    $([sidebar, sidebarTrigger]).toggleClass("nav-is-visible");
-  });
-
-  $(".has-children > a").on("click", function (event) {
-    var mq = checkMQ(),
-      selectedItem = $(this);
-    if (mq == "mobile" || mq == "tablet") {
-      event.preventDefault();
-      if (selectedItem.parent("li").hasClass("selected")) {
-        selectedItem.parent("li").removeClass("selected");
-      } else {
-        sidebar.find(".has-children.selected").removeClass("selected");
-        selectedItem.parent("li").addClass("selected");
-      }
-    }
-  });
-
-  sidebar.children("ul").menuAim({
-    activate: function (row) {
-      $(row).addClass("hover");
-    },
-    deactivate: function (row) {
-      $(row).removeClass("hover");
-    },
-    exitMenu: function () {
-      sidebar.find(".hover").removeClass("hover");
-      return true;
-    },
-    submenuSelector: ".has-children",
-  });
-
-  function checkMQ() {
-    return window
-      .getComputedStyle(document.querySelector(".cd-main-content"), "::before")
-      .getPropertyValue("content")
-      .replace(/'/g, "")
-      .replace(/"/g, "");
-  }
-
-  function moveNavigation() {
-    var mq = checkMQ();
-
-    if (mq == "mobile" && topNavigation.parents(".cd-side-nav").length == 0) {
-      detachElements();
-      topNavigation.appendTo(sidebar);
-    } else if (
-      (mq == "tablet" || mq == "desktop") &&
-      topNavigation.parents(".cd-side-nav").length > 0
-    ) {
-      detachElements();
-      searchForm.insertAfter(header.find(".cd-logo"));
-      topNavigation.appendTo(header.find(".cd-nav"));
-    }
-    checkSelected(mq);
-    resizing = false;
-  }
-
-  function detachElements() {
-    topNavigation.detach();
-  }
-
-  function checkSelected(mq) {
-    if (mq == "desktop") $(".has-children.selected").removeClass("selected");
-  }
-
-  function checkScrollbarPosition() {
-    var mq = checkMQ();
-
-    if (mq != "mobile") {
-      var sidebarHeight = sidebar.outerHeight(),
-        windowHeight = $(window).height(),
-        mainContentHeight = mainContent.outerHeight(),
-        scrollTop = $(window).scrollTop();
-
-      scrollTop + windowHeight > sidebarHeight &&
-      mainContentHeight - sidebarHeight != 0
-        ? sidebar.addClass("is-fixed").css("bottom", 0)
-        : sidebar.removeClass("is-fixed").attr("style", "");
-    }
-    scrolling = false;
-  }
-});
-
-// ===== Get Local Time ======
-class DateTimeDisplay {
-  constructor(dateElementId, timeElementId) {
-    this.dateElement = document.getElementById(dateElementId);
-    this.timeElement = document.getElementById(timeElementId);
-
-    // Initial call to display the date and time immediately
-    this.updateDateTime();
-
-    // Update the date and time every second (1000 milliseconds)
-    setInterval(() => this.updateDateTime(), 1000);
-  }
-
-  updateDateTime() {
-    // Get the current date and time
-    const currentDate = new Date();
-
-    // Extract the components of the date and time
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth() + 1; // Months are zero-based
-    const day = currentDate.getDate();
-    const hours = currentDate.getHours();
-    const minutes = currentDate.getMinutes();
-    const seconds = currentDate.getSeconds();
-
-    // Format the date and time as strings
-    const formattedDate = `${year}-${this.addLeadingZero(
-      month
-    )}-${this.addLeadingZero(day)}`;
-    const formattedTime = `${this.addLeadingZero(hours)}:${this.addLeadingZero(
-      minutes
-    )}:${this.addLeadingZero(seconds)}`;
-
-    // Display the date and time in HTML elements
-    this.dateElement.innerText = `${formattedDate}`;
-    this.timeElement.innerText = ` ${formattedTime}`;
-  }
-
-  addLeadingZero(number) {
-    return (number < 10 ? "0" : "") + number;
-  }
+  // Calculate the number completed tasks
+  const completedTasks = storage.filter((task) => task.resolved).length;
+  completetask.innerHTML = `${completedTasks} Completed`;
 }
 
-// Create an instance of DateTimeDisplay with element IDs
-const dateTimeDisplay = new DateTimeDisplay("date", "liveClock");
-// ===== End Get Local Time =====
-// ===== filter ====
-document.addEventListener("DOMContentLoaded", function () {
-  // Initially hide elements with classes filter-geo and filter-wind
-  document
-    .querySelectorAll(".filter-work, .filter-other")
-    .forEach((element) => {
-      element.style.display = "none";
-    });
+function listSection() {
+  let storage = JSON.parse(localStorage.getItem("todolist"));
+  // if there is no item in localstorage, initialize new object array
+  storage = storage ? storage : [];
 
-  let filterItems = document.querySelectorAll(".temp_filters li");
+  let list = document.getElementById("list");
+  list.innerHTML = "";
 
-  function activePortfolio() {
-    filterItems.forEach((el) => {
-      el.classList.remove("filter-active");
-      this.classList.add("filter-active");
+  // create a div element with class name 'cards'
+  function cardElements(id, title, createdAt, resolved) {
+    // set time with momentjs
+    const time = moment(createdAt).fromNow();
 
-      // Show or hide elements based on the selected filter
-      let selectedFilter = this.getAttribute("data-filter");
-      document.querySelectorAll(".temp_item").forEach((item) => {
-        if (item.classList.contains(selectedFilter)) {
-          item.style.display = "block";
-        } else {
-          item.style.display = "none";
-        }
-      });
-    });
+    return `
+      <div class="cards ${resolved ? "resolved" : null}">
+        <button
+          class="fas fa-check btn resolved-btn ${resolved ? "active" : null}"
+          value=${id}
+        ></button>
+        <div class="cards-info">
+          <h3 class="task">${title}</h3>
+          <p class="time">${time}</p>
+        </div>
+        <button value=${id} class="fas fa-times btn delete-btn"></button>
+      </div>
+    `;
   }
 
-  filterItems.forEach((el) => {
-    el.addEventListener("click", activePortfolio);
+  storage.reverse().map((elem) => {
+    list.innerHTML += cardElements(
+      elem.id,
+      elem.title,
+      elem.createdAt,
+      elem.resolved
+    );
   });
 
-  // Mixit up filter
-  let mixerPortfolio = mixitup(".task_wrap-container", {
-    selectors: {
-      target: ".task_item",
-    },
-    animation: {
-      duration: 300,
-    },
+  listAction();
+}
+
+function listAction() {
+  const deleteBtn = document.querySelectorAll(".cards .delete-btn");
+  const resolvedBtn = document.querySelectorAll(".cards .resolved-btn");
+
+  // initialize delete list function
+  function deleteList(listID) {
+    let storage = JSON.parse(localStorage.getItem("todolist"));
+    // if there is no item in localstorage, initialize new object array
+    storage = storage ? storage : [];
+
+    const res = storage.filter((elem) => {
+      return elem.id !== listID;
+    });
+
+    localStorage.setItem("todolist", JSON.stringify(res));
+  }
+
+  function resolvedList(listID) {
+    let storage = JSON.parse(localStorage.getItem("todolist"));
+    storage = storage ? storage : [];
+
+    storage.map((elem) => {
+      if (elem.id === listID) {
+        elem.resolved = !elem.resolved;
+      }
+      return elem;
+    });
+
+    localStorage.setItem("todolist", JSON.stringify(storage));
+
+    // Dispatch the custom event after updating local storage
+    const event = new CustomEvent("taskUpdated");
+    document.dispatchEvent(event);
+  }
+
+  deleteBtn.forEach((elem) => {
+    elem.addEventListener("click", (event) => {
+      deleteList(event.target.value);
+
+      // update data
+      listSection();
+      header();
+    });
   });
-});
+
+  resolvedBtn.forEach((elem) => {
+    elem.addEventListener("click", (event) => {
+      resolvedList(event.target.value);
+
+      // update data
+      listSection();
+    });
+  });
+}
+
+(function () {
+  const inputField = document.getElementsByClassName("form-control")[0];
+  const submitBtn = document.getElementById("submit-btn");
+
+  // read user typing
+  inputField.addEventListener("keyup", (event) => {
+    inputField.value = event.target.value;
+  });
+
+  function handleSubmit() {
+    let storage = JSON.parse(localStorage.getItem("todolist"));
+    // if there is no item in localstorage, initialize new object array
+    storage = storage ? storage : [];
+
+    // create unique ID for each list
+    const listID = [];
+    const alphabet =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (let i = 0; i < 10; i++) {
+      listID[i] = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+    }
+
+    if (inputField.value.length > 0) {
+      // insert new data into storage array object
+      storage.push({
+        id: listID.join(""),
+        title: inputField.value,
+        createdAt: new Date(),
+        resolved: false,
+      });
+
+      // update local storage with new data
+      localStorage.setItem("todolist", JSON.stringify(storage));
+
+      listSection();
+      header();
+      inputField.value = "";
+    }
+  }
+
+  submitBtn.onclick = () => handleSubmit();
+  inputField.onkeypress = (event) => {
+    event.keyCode === 13 ? handleSubmit() : null;
+  };
+})();
+
+window.onload = () => {
+  let storage = JSON.parse(localStorage.getItem("todolist"));
+  storage = storage ? storage : [];
+
+  const today = new Date();
+  const defaultDate = new Date(
+    new Date(today.getTime()).setDate(today.getDate() - 1)
+  );
+
+  if (storage.length === 0) {
+    const manual = [
+      {
+        id: "Rb5B80r8jj",
+        resolved: false,
+        title: "Morning Jog in the City Park",
+        createdAt: defaultDate,
+      },
+      {
+        id: "eV4B60r5Fc",
+        resolved: false,
+        title: "Open Codepen and Get Inspired",
+        createdAt: defaultDate,
+      },
+      {
+        id: "pY2v99r0Ff",
+        resolved: true,
+        title: "Completing the Project",
+        createdAt: defaultDate,
+      },
+    ];
+
+    storage.push(...manual);
+    localStorage.setItem("todolist", JSON.stringify(storage));
+  }
+
+  // Define a callback function to update the header after storage is updated
+  const updateHeaderCallback = () => {
+    header();
+  };
+
+  header();
+  listSection(updateHeaderCallback);
+
+  // Listen for the custom event and update the header
+  document.addEventListener("taskUpdated", () => {
+    updateHeaderCallback();
+  });
+
+  // Manually trigger the taskUpdated event after initial rendering
+  const event = new CustomEvent("taskUpdated");
+  document.dispatchEvent(event);
+};
