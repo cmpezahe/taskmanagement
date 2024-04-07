@@ -339,7 +339,7 @@ footer {
   outline: none;
   border-style: none;
   border-radius: 50%;
-  pointer-events: painted;
+  pointer-events: auto;
   background-color: transparent;
   transition: 0.2s linear;
   right: 0;
