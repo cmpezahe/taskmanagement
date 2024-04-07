@@ -7,11 +7,11 @@ function header() {
   storage = storage ? storage : [];
 
   dateHeader.innerHTML = moment(new Date()).format("ddd, LL");
-  taskCount.innerHTML = `${storage.length} Tasks`;
+  taskCount.innerHTML = `${storage.length}`;
 
   // Calculate the number completed tasks
   const completedTasks = storage.filter((task) => task.resolved).length;
-  completetask.innerHTML = `${completedTasks} Completed`;
+  completetask.innerHTML = `${completedTasks}`;
 }
 
 function listSection() {
@@ -170,19 +170,19 @@ window.onload = () => {
       {
         id: "Rb5B80r8jj",
         resolved: false,
-        title: "Morning Jog in the City Park",
+        title: "Going to Gym",
         createdAt: defaultDate,
       },
       {
         id: "eV4B60r5Fc",
         resolved: false,
-        title: "Open Codepen and Get Inspired",
+        title: "Grocery Shopping",
         createdAt: defaultDate,
       },
       {
         id: "pY2v99r0Ff",
         resolved: true,
-        title: "Completing the Project",
+        title: "Meeting",
         createdAt: defaultDate,
       },
     ];

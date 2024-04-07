@@ -1,140 +1,202 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+/*? Import Font Poppins */
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 
+/*! Reset */
 * {
-  padding: 0;
   margin: 0;
-  /* font-family: "Poppins", sans-serif; */
-  outline: none;
-  border: none;
-  border-radius: 0;
-  /* color: #000000; */
-  font-family: system-ui, "Poppins", sans-serif;
-  color: var(--fg);
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  /* border: 1px solid red; */
+
 }
 
+/* ? Custom CSS */
 :root {
-  --compelted-clr: #99F6E440;
-  --bg: hsl(var(--hue), 10%, 90%);
-  --fg: hsl(var(--hue), 66%, 24%);
-  --primary: hsl(var(--hue), 66%, 44%);
-  --hue: 184;
-  --background-clr: #ecf0f3;
-  --orang-clr: #f96d00;
-  --style-clr: hsl(184, 66%, 54%);
-  --green-clr: #559C01;
-  --black-clr: #000000;
-  --grey-clr: #76777c;
-  --border: 2px solid rgba(255, 255, 255, 0.068);
-  --gradient: linear-gradient(145deg, hsl(var(--hue), 10%, 85%), hsl(var(--hue), 10%, 100%));
-  --shawdo: 7px 7px 15px rgba(55, 84, 170, 0.15), -7px -7px 20px white, inset 0px 0px 4px rgba(255, 255, 255, 0.2);
+  --scheduled-clr: #FFC700;
+  --today-clr: #97E7E1;
+  --all-color: #03C988;
+  --overdue-clr: #F05941;
+  --font-clr: #0C0C0C;
+  --header-clr: #FAF0E6;
+  --card-color: #E7F6F2;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+
+  background-color: var(--bg-color1);
+  color: var(--color1);
+}
+
+body.dark {
+  --bg-color1: #0b0f19;
+  --bg-color2: #1c1e2a;
+  --color1: #FEFDED;
+  --color2: #DDD;
+
+}
+
+body:not(.dark) {
+  --bg-color1: #fbfdff;
+  --bg-color2: #f5f5f5;
+  --color1: #3e4455;
+  --color2: #000;
+
 }
 
 body {
   position: absolute;
   width: 100%;
   height: 100%;
-  font-size: 0.95rem;
+  font-size: .95rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* box-shadow: var(--shawdo); */
-  background: var(--background-clr);
-  /* background: linear-gradient(30deg, #0891B2, #B5EEF0, #5EEAD4) fixed; */
-}
-
-input,
-textarea,
-button {
-  background: transparent;
-  border-radius: 0;
-  font-size: 0.95rem;
 }
 
 main {
   display: flex;
   width: 450px;
-  max-height: 80%;
+  max-height: 95%;
   padding: 0 20px;
+}
+
+button {
+  background: transparent;
+  border-radius: 0;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 10px 20px;
+  border-bottom: 1px solid #21212118;
+  background: var(--header-clr);
 }
 
 #wrapper {
   width: 100%;
   position: relative;
   display: grid;
-  background: var(--background-clr);
-  /* box-shadow: 0 10px 80px #0e74909f, 0 10px 10px #0E749020; */
-  border-radius: 1rem;
-  overflow-y: hidden;
-  box-shadow: var(--shawdo);
+  border: 15px;
+  overflow: hidden;
 }
 
-header {
-  padding: 20px 20px 10px 20px;
-  border-bottom: 1px solid #21212150;
+.profile {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+
+
+}
+
+.profile .user-notifications {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+
+
+.user-prifle {
+  display: flex;
+  flex-direction: column;
+  /* margin-left: 10px; */
+  justify-content: center;
+}
+
+.profile .user-prifle .user-name {
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: var(--color1);
+
+}
+
+.profile .user-prifle .message {
+  font-size: .7rem;
+  color: var(--color2);
+  font-style: italic;
+  font-weight: 300;
 }
 
 .task-container {
-  display: flex;
-  gap: 1.2rem;
-  margin-top: .2rem;
-}
-
-#input {
   display: grid;
-  gap: 20px;
-  grid-template-columns: 1fr auto;
-  margin: 20px 0 0 0;
-}
-
-#input .form-control {
+  grid-template-columns: 1fr 1fr;
   width: 100%;
+  justify-content: center;
+  gap: .4rem;
 }
 
-#input #submit-btn {
-  padding: 5px 10px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 5px;
-  background: var(--background-clr);
-  box-shadow: var(--shawdo);
-  border-radius: .5rem;
-  cursor: pointer;
+.profile-date {
+  font-size: 18px;
+  margin: 5px 0;
 }
 
-#input #submit-btn {
-  color: #ffffff;
+.task-container .task-menu {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  border-radius: 10px;
+  background: #90D26D;
+  width: 100%;
+  justify-content: space-between;
+  height: 60px;
+  padding: 7px 13px;
+
 }
 
-#input #submit-btn * {
-  color: var(--fg);
+.task-container .task-menu .icon-container {
+  display: flex;
 }
 
-#input #submit-btn:hover {
-  /* filter: contrast(1.5); */
-  background: var(--gradient);
+
+.task-sub-munu {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
 }
 
+.task-container .today-task {
+  background: var(--today-clr);
+}
+
+.task-container .scheduled-task {
+  background: var(--scheduled-clr);
+}
+
+
+.task-container .completed-task {
+  background: var(--all-color);
+}
+
+.task-container .overdue-task {
+  background: var(--overdue-clr);
+}
+
+
+/*! MAIN CONTAIN   */
 #list {
+  width: 100%;
+  max-height: 300px;
+  /* Set a fixed height for the container */
   overflow-y: auto;
-  display: grid;
+  /* Enable vertical scroll */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--bg-color1);
 }
 
-#list::-webkit-scrollbar {
-  width: 8px;
-}
-
-#list::-webkit-scrollbar-button {
-  height: 5px;
-}
-
-#list::-webkit-scrollbar-thumb {
-  background: #212121;
-  border-radius: 2rem;
-}
 
 .cards .cards-info .time {
   opacity: 0.5;
@@ -147,9 +209,9 @@ header {
   align-items: center;
   gap: 15px;
   padding: 10px 20px;
-  border-bottom: 1px solid #21212120;
-  cursor: default;
-
+  background-color: var(--card-color);
+  cursor: pointer;
+  border-radius: 10px;
 }
 
 .cards-info {
@@ -163,7 +225,8 @@ header {
 }
 
 .cards.resolved {
-  background: var(--compelted-clr);
+  background: var(--all-color);
+
 }
 
 .cards.resolved .cards-info {
@@ -190,17 +253,18 @@ header {
 }
 
 .cards .delete-btn {
-  visibility: hidden;
+  /* visibility: hidden; */
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 2px solid var(--orang-clr);
-  color: var(--orang-clr);
+  border: 2px solid var(--overdue-clr);
+  color: var(--overdue-clr);
   cursor: pointer;
+
 }
 
 .cards:hover {
-  background: #99F6E420;
+  background: #17181820;
 }
 
 .cards:hover .delete-btn {

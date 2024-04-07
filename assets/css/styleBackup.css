@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    /* font-family: "Poppins", sans-serif; */
+    outline: none;
+    border: none;
+    border-radius: 0;
+    /* color: #000000; */
+    font-family: system-ui, "Poppins", sans-serif;
+    color: var(--fg);
+}
+
+:root {
+    --compelted-clr: #99F6E440;
+    --bg: hsl(var(--hue), 10%, 90%);
+    --fg: hsl(var(--hue), 66%, 24%);
+    --primary: hsl(var(--hue), 66%, 44%);
+    --hue: 184;
+    --background-clr: #ecf0f3;
+    --orang-clr: #f96d00;
+    --style-clr: hsl(184, 66%, 54%);
+    --green-clr: #559C01;
+    --black-clr: #000000;
+    --grey-clr: #76777c;
+    --border: 2px solid rgba(255, 255, 255, 0.068);
+    --gradient: linear-gradient(145deg, hsl(var(--hue), 10%, 85%), hsl(var(--hue), 10%, 100%));
+    --shawdo: 7px 7px 15px rgba(55, 84, 170, 0.15), -7px -7px 20px white, inset 0px 0px 4px rgba(255, 255, 255, 0.2);
+}
+
+body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: var(--shawdo); */
+    background: var(--background-clr);
+    /* background: linear-gradient(30deg, #0891B2, #B5EEF0, #5EEAD4) fixed; */
+}
+
+input,
+textarea,
+button {
+    background: transparent;
+    border-radius: 0;
+    font-size: 0.95rem;
+}
+
+main {
+    display: flex;
+    width: 450px;
+    max-height: 80%;
+    padding: 0 20px;
+}
+
+#wrapper {
+    width: 100%;
+    position: relative;
+    display: grid;
+    background: var(--background-clr);
+    /* box-shadow: 0 10px 80px #0e74909f, 0 10px 10px #0E749020; */
+    border-radius: 1rem;
+    overflow-y: hidden;
+    box-shadow: var(--shawdo);
+}
+
+header {
+    padding: 20px 20px 10px 20px;
+    border-bottom: 1px solid #21212150;
+}
+
+.task-container {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: .2rem;
+}
+
+#input {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr auto;
+    margin: 20px 0 0 0;
+}
+
+#input .form-control {
+    width: 100%;
+}
+
+#input #submit-btn {
+    padding: 5px 10px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 5px;
+    background: var(--background-clr);
+    box-shadow: var(--shawdo);
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+#input #submit-btn {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#input #submit-btn * {
+    color: var(--fg);
+}
+
+#input #submit-btn:hover {
+    /* filter: contrast(1.5); */
+    background: var(--gradient);
+}
+
+#list {
+    overflow-y: auto;
+    display: grid;
+}
+
+#list::-webkit-scrollbar {
+    width: 8px;
+}
+
+#list::-webkit-scrollbar-button {
+    height: 5px;
+}
+
+#list::-webkit-scrollbar-thumb {
+    background: #212121;
+    border-radius: 2rem;
+}
+
+.cards .cards-info .time {
+    opacity: 0.5;
+    font-size: 0.8rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 20px;
+    border-bottom: 1px solid #21212120;
+    cursor: default;
+
+}
+
+.cards-info {
+    overflow-x: hidden;
+}
+
+.cards-info .task {
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.cards.resolved {
+    background: var(--compelted-clr);
+}
+
+.cards.resolved .cards-info {
+    opacity: 0.5;
+}
+
+.cards.resolved .cards-info .task {
+    text-decoration: line-through;
+}
+
+.cards .resolved-btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid #21212140;
+    color: #00000000;
+    cursor: pointer;
+}
+
+.cards .resolved-btn.active {
+    background: #0D9488;
+    color: #ffffff;
+    border-color: #0F766E;
+}
+
+.cards .delete-btn {
+    visibility: hidden;
+    /* Initially hide the delete button */
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    /* Create a circular shape */
+    border: 2px solid var(--orang-clr);
+    /* Border color using a custom variable */
+    color: var(--orang-clr);
+    /* Text color using a custom variable */
+    cursor: pointer;
+    /* Show a pointer cursor on hover (indicating interactivity) */
+}
+
+
+.cards:hover {
+    background: #99F6E420;
+}
+
+.cards:hover .delete-btn {
+    visibility: visible;
+}
