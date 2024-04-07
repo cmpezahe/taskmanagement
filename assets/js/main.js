@@ -208,3 +208,34 @@ window.onload = () => {
   const event = new CustomEvent("taskUpdated");
   document.dispatchEvent(event);
 };
+
+//! NAVIGATION BAR HIDE
+// Wait for the DOM content to be fully loaded before executing JavaScript
+document.addEventListener("DOMContentLoaded", function () {
+  // Get the header element
+  const header = document.querySelector("header");
+
+  // Variable to store the previous scroll position
+  let prevScrollPos = window.pageYOffset;
+
+  // Function to handle scroll event
+  function handleScroll() {
+    // Get the current scroll position
+    let currentScrollPos = window.pageYOffset;
+
+    // Check if the current scroll position is greater than the previous scroll position
+    if (prevScrollPos > currentScrollPos) {
+      // Show the header if scrolling up
+      header.style.top = "0";
+    } else {
+      // Hide the header if scrolling down
+      header.style.top = `-${header.offsetHeight}px`;
+    }
+
+    // Update the previous scroll position
+    prevScrollPos = currentScrollPos;
+  }
+
+  // Add scroll event listener to window
+  window.addEventListener("scroll", handleScroll);
+});

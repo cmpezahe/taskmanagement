@@ -49,21 +49,23 @@ body:not(.dark) {
 }
 
 body {
-  position: absolute;
   width: 100%;
   height: 100%;
-  font-size: .95rem;
+  font-size: 0.95rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 main {
-  display: flex;
-  width: 450px;
-  max-height: 95%;
-  padding: 0 20px;
+  width: 100%;
+  max-width: 450px;
+  max-height: calc(100% - 65px);
+  /* Adjust based on header height */
+  overflow-y: auto;
+  /* Add overflow-y: auto to enable scrolling if content exceeds max-height */
 }
+
 
 button {
   background: transparent;
@@ -78,16 +80,20 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 20px 10px 20px;
-  border-bottom: 1px solid #21212118;
   background: var(--header-clr);
+  z-index: 1;
+  height: 240px
 }
 
 #wrapper {
+  padding-top: 240px;
   width: 100%;
   position: relative;
   display: grid;
   border: 15px;
   overflow: hidden;
+  min-height: calc(100vh - 240px);
+
 }
 
 .profile {
@@ -135,6 +141,7 @@ header {
   width: 100%;
   justify-content: center;
   gap: .4rem;
+  overflow: auto;
 }
 
 .profile-date {
@@ -186,8 +193,10 @@ header {
 
 /*! MAIN CONTAIN   */
 #list {
+  /* padding: 3rem 0; */
   width: 100%;
-  max-height: 300px;
+  /* max-height: 595px; */
+  max-height: calc(100vh -595px);
   /* Set a fixed height for the container */
   overflow-y: auto;
   /* Enable vertical scroll */
@@ -269,4 +278,49 @@ header {
 
 .cards:hover .delete-btn {
   visibility: visible;
+}
+
+footer {
+  background-color: #533483;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 10px 10px 0 0;
+  z-index: 1;
+}
+
+#input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background-color: #03c988;
+  border-radius: 10px;
+}
+
+#input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px;
+  color: var(--color1);
+}
+
+#input button {
+  display: flex;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--color1);
+  cursor: pointer;
+  padding: 10px;
+  background: #90d26d;
+  align-items: center;
+  gap: 5px;
 }

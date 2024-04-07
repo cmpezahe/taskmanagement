@@ -19,81 +19,82 @@
 
 <body>
   <main>
+
+    <header>
+      <div class="profile">
+        <div class="user-notifications">
+          <span class="notification"><i class="fas fa-bell"></i></span>
+          <span><i class="fas fa-ellipsis-v"></i></span>
+        </div>
+        <div class="user-prifle">
+          <span class="user-name"> Hello, Lauren</span>
+          <span class="message">You have work today</span>
+        </div>
+      </div>
+      <h2 class="profile-date" id="date"></h2>
+      <div class="task-container">
+
+        <div class="task-menu today-task">
+          <div class="icon-container">
+            <i class="fas fa-calendar"></i>
+          </div>
+          <div class="task-sub-munu">
+            <label for="today">Today</label>
+            <p id="today"> 6</p>
+          </div>
+
+        </div>
+
+        <div class="task-menu scheduled-task">
+          <div class="icon-container">
+            <i class="far fa-calendar-alt"></i>
+          </div>
+          <div class="task-sub-munu">
+            <label for="task-count">Scheduled</label>
+            <p id="task-count"></p>
+          </div>
+        </div>
+        <div class="task-menu completed-task">
+          <div class="icon-container">
+            <i class="fas fa-check"></i>
+          </div>
+          <div class="task-sub-munu">
+            <label for="complete_task">Completed</label>
+            <p id="complete_task"></p>
+          </div>
+        </div>
+
+        <div class="task-menu overdue-task">
+
+          <div class="icon-container">
+            <i class="far fa-clock"></i>
+          </div>
+
+          <div class="task-sub-munu">
+            <label for="new_task">Over due</label>
+            <p id="new_task">7</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
     <div id="wrapper">
-      <header>
-        <div class="profile">
-          <div class="user-notifications">
-            <span class="notification"><i class="fas fa-bell"></i></span>
-            <span><i class="fas fa-ellipsis-v"></i></span>
-          </div>
-          <div class="user-prifle">
-            <span class="user-name"> Hello, Lauren</span>
-            <span class="message">You have work today</span>
-          </div>
-        </div>
-        <h2 class="profile-date" id="date"></h2>
-        <div class="task-container">
-
-          <div class="task-menu today-task">
-            <div class="icon-container">
-              <i class="fas fa-calendar"></i>
-            </div>
-            <div class="task-sub-munu">
-              <label for="today">Today</label>
-              <p id="today"> 6</p>
-            </div>
-
-          </div>
-
-          <div class="task-menu scheduled-task">
-            <div class="icon-container">
-              <i class="far fa-calendar-alt"></i>
-            </div>
-            <div class="task-sub-munu">
-              <label for="task-count">Scheduled</label>
-              <p id="task-count"></p>
-            </div>
-          </div>
-          <div class="task-menu completed-task">
-            <div class="icon-container">
-              <i class="fas fa-check"></i>
-            </div>
-            <div class="task-sub-munu">
-              <label for="complete_task">Completed</label>
-              <p id="complete_task"></p>
-            </div>
-          </div>
-
-
-
-          <div class="task-menu overdue-task">
-
-            <div class="icon-container">
-              <i class="far fa-clock"></i>
-            </div>
-
-            <div class="task-sub-munu">
-              <label for="new_task">Over due</label>
-              <p id="new_task">7</p>
-            </div>
-
-          </div>
-
-        </div>
-
-      </header>
-
-
 
       <section id="list"></section>
-      <div id="input">
-        <input type="text" name="task" class="form-control" placeholder="Add a new Task..." value=""
-          autocomplete="off" />
-        <button id="submit-btn">
-          <p>Add</p>
-          <i class="fas fa-arrow-right"></i>
-        </button>
-      </div>
+
+      <footer>
+        <div id="input">
+          <input type="text" name="task" class="form-control" placeholder="Add a new Task..." value=""
+            autocomplete="off" />
+          <button id="submit-btn">
+            <p>Add</p>
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </footer>
+
     </div>
   </main>
 </body>
