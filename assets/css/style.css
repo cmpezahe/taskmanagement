@@ -296,11 +296,9 @@ footer {
 
 .input-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
   position: relative;
-  height: 50px
+  height: 100%;
+  width: auto;
 }
 
 .form-control {
