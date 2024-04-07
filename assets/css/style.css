@@ -204,6 +204,7 @@ header {
   flex-direction: column;
   gap: 8px;
   background: var(--bg-color1);
+  padding: 0 10px;
 }
 
 
@@ -281,46 +282,85 @@ header {
 }
 
 footer {
-  background-color: #533483;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
+  /* background-color: #533483; */
+  /* display: flex;
+  align-items: center;
+  justify-content: flex-end;
   position: fixed;
   bottom: 0;
-  left: 0;
   width: 100%;
-  margin: 0 auto;
-  border-radius: 10px 10px 0 0;
-  z-index: 1;
+  padding: 1rem;
+  background-color: transparent; */
 }
 
-#input {
+
+.input-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  background-color: #03c988;
-  border-radius: 10px;
+  gap: 15px;
+  position: relative;
+  position: fixed;
+  bottom: 20px;
+  left: 40%;
 }
 
-#input input {
-  flex: 1;
-  border: none;
-  outline: none;
-  background: transparent;
+.form-control {
+  border-style: none;
+  height: 50px;
+  width: 50px;
   padding: 10px;
-  color: var(--color1);
+  outline: none;
+  border-radius: 50%;
+  transition: 0.5s ease-in-out;
+  background-color: #004225;
+  /* box-shadow: 0px 0px 3px #1557c0; */
+  padding-right: 40px;
+  color: var(--overdue-clr);
+
 }
 
-#input button {
+.form-control::placeholder,
+.form-control {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 17px;
+}
+
+.form-control::placeholder {
+  color: #FFB000;
+}
+
+.icon {
   display: flex;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: var(--color1);
-  cursor: pointer;
-  padding: 10px;
-  background: #90d26d;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
+  position: absolute;
+  right: 0px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border-style: none;
+  border-radius: 50%;
+  pointer-events: painted;
+  background-color: transparent;
+  transition: 0.2s linear;
+}
+
+.icon .fa-plus {
+  color: #FFB000;
+  font-size: 24px;
+
+}
+
+.icon:focus~.form-control,
+.form-control:focus {
+  box-shadow: none;
+  width: 250px;
+  border-radius: 50px;
+  background-color: #004225;
+  border: 2px solid #FFB000;
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+
 }
