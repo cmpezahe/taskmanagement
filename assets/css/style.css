@@ -283,14 +283,14 @@ header {
 
 footer {
   /* background-color: #533483; */
-  /* display: flex;
+  display: flex;
   align-items: center;
   justify-content: flex-end;
   position: fixed;
   bottom: 0;
   width: 100%;
   padding: 1rem;
-  background-color: transparent; */
+  background-color: transparent;
 }
 
 
@@ -300,9 +300,8 @@ footer {
   justify-content: center;
   gap: 15px;
   position: relative;
-  position: fixed;
-  bottom: 20px;
-  left: 40%;
+  /* position: fixed; */
+
 }
 
 .form-control {
