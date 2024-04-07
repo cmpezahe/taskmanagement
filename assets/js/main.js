@@ -210,32 +210,23 @@ window.onload = () => {
 };
 
 //! NAVIGATION BAR HIDE
-// Wait for the DOM content to be fully loaded before executing JavaScript
-document.addEventListener("DOMContentLoaded", function () {
-  // Get the header element
-  const header = document.querySelector("header");
 
-  // Variable to store the previous scroll position
-  let prevScrollPos = window.pageYOffset;
+// document.addEventListener("DOMContentLoaded", function () {
+//   const header = document.querySelector("header");
 
-  // Function to handle scroll event
-  function handleScroll() {
-    // Get the current scroll position
-    let currentScrollPos = window.pageYOffset;
+//   let prevScrollPos = window.pageYOffset;
 
-    // Check if the current scroll position is greater than the previous scroll position
-    if (prevScrollPos > currentScrollPos) {
-      // Show the header if scrolling up
-      header.style.top = "0";
-    } else {
-      // Hide the header if scrolling down
-      header.style.top = `-${header.offsetHeight}px`;
-    }
+//   function handleScroll() {
+//     let currentScrollPos = window.pageYOffset;
 
-    // Update the previous scroll position
-    prevScrollPos = currentScrollPos;
-  }
+//     if (prevScrollPos > currentScrollPos) {
+//       header.style.top = "0";
+//     } else {
+//       header.style.top = `-${header.offsetHeight}px`;
+//     }
 
-  // Add scroll event listener to window
-  window.addEventListener("scroll", handleScroll);
-});
+//     prevScrollPos = currentScrollPos;
+//   }
+
+//   window.addEventListener("scroll", handleScroll);
+// });

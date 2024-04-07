@@ -92,7 +92,7 @@ header {
   display: grid;
   border: 15px;
   overflow: hidden;
-  min-height: calc(100vh - 240px);
+  /* min-height: calc(100vh - 240px); */
 
 }
 
@@ -195,8 +195,8 @@ header {
 #list {
   /* padding: 3rem 0; */
   width: 100%;
-  /* max-height: 595px; */
-  max-height: calc(100vh -595px);
+  max-height: 595px;
+  /* max-height: calc(100vh -595px); */
   /* Set a fixed height for the container */
   overflow-y: auto;
   /* Enable vertical scroll */
