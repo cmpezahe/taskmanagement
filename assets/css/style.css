@@ -69,22 +69,21 @@ header {
   transition: .8s;
   padding: 15px;
   position: fixed;
-  height: 213px;
+  height: 219px;
   background-color: burlywood;
   border-radius: 0 0 15px 15px;
+  padding-top: 25px;
 }
 
 
 #wrapper {
-  margin-top: 1rem 0;
-  /* margin-top: 240px; */
+
   display: flex;
   flex-direction: column;
-  /* max-width: 350px; */
   align-items: center;
   justify-content: center;
-  width: 100%;
-  gap: 1rem;
+
+
 
 }
 
@@ -182,7 +181,7 @@ header {
 
 /*! MAIN CONTAIN   */
 #list {
-  margin-top: 213px;
+  margin-top: 219px;
   border: 1px solid var(--today-clr);
   width: 100%;
   overflow-y: auto;
@@ -278,6 +277,7 @@ footer {
   padding: 15px;
   position: fixed;
   background-color: #000;
+  padding-bottom: 50px;
 }
 
 
