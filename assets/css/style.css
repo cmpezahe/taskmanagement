@@ -72,7 +72,7 @@ header {
   height: 219px;
   background-color: burlywood;
   border-radius: 0 0 15px 15px;
-  padding-top: 25px;
+  /* padding-top: 25px; */
 }
 
 
@@ -277,7 +277,7 @@ footer {
   padding: 15px;
   position: fixed;
   background-color: #000;
-  padding-bottom: 50px;
+  /* padding-bottom: 50px; */
 }
 
 
