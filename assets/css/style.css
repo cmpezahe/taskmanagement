@@ -70,8 +70,9 @@ header {
   padding: 15px;
   position: fixed;
   height: 219px;
-  background-color: burlywood;
-  border-radius: 0 0 15px 15px;
+  background: var(--bg-color1);
+  /* background-color: burlywood; */
+  /* border-radius: 0 0 15px 15px; */
   /* padding-top: 25px; */
 }
 
@@ -182,15 +183,15 @@ header {
 /*! MAIN CONTAIN   */
 #list {
   margin-top: 219px;
-  border: 1px solid var(--today-clr);
+  /* border: 1px solid var(--today-clr); */
   width: 100%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 7px;
   background: var(--bg-color1);
-  padding: 8px;
-  border-radius: 10px;
+  padding: 6px;
+  /* border-radius: 10px; */
   margin-bottom: 80px;
 }
 
@@ -204,10 +205,11 @@ header {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 15px;
-  padding: 10px 20px;
-  background-color: var(--card-color);
+  padding: 8px 15px;
+  /* background-color: var(--card-color); */
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 8px;
+  border: 1px solid #0000002a;
 }
 
 .cards-info {
@@ -227,18 +229,21 @@ header {
 
 .cards.resolved .cards-info {
   opacity: 0.5;
+  color: var(--color2);
+  font-size: 14px;
 }
 
 .cards.resolved .cards-info .task {
   text-decoration: line-through;
+  font-size: 14px;
 }
 
 .cards .resolved-btn {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 2px solid #21212140;
-  color: #00000000;
+  border: 2px solid var(--color2);
+  color: var(--color2);
   cursor: pointer;
 }
 
@@ -274,9 +279,9 @@ footer {
   bottom: 0px;
   z-index: 20;
   transition: .8s;
-  padding: 15px;
+  padding: 15px 30px;
   position: fixed;
-  background-color: #000;
+  background-color: var(--bg-color1);
   /* padding-bottom: 50px; */
 }
 
